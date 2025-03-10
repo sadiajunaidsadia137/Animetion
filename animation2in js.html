@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animetion2</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: rgb(221, 184, 237);
+        }
+
+        input {
+            height: 35px;
+            width: 180px;
+            font-size: 25px;
+            color: purple;
+            border: 3px solid purple;
+            margin-left: 40%;
+            border-radius: 10px;
+            margin-top: 40px;
+        }
+
+        .pera {
+            height: 60px;
+            width: 300px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 25px;
+            margin-top: 40px;
+            color: purple;
+            margin-left: 36%;
+            border: 3px solid purple;
+        }
+
+        .cElement {
+            height: 400px;
+            width: 500px;
+            border: 3px solid purple;
+            margin-left: 30%;
+            margin-top: 20px;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sElement {
+            height: max-content;
+            width: 100%;
+            z-index: 2;
+            color: purple;
+            position: absolute;
+        }
+
+        .button {
+
+            height: 35px;
+            width: 180px;
+            border: 3px solid purple;
+            margin-left: 40%;
+            border-radius: 10px;
+            margin-top: 40px;
+            font-size: 25px;
+            color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="number" value="10">
+    <div class="pera"></div>
+    <div class="cElement">
+        <div class="sElement"></div>
+    </div>
+    <button class=" button">Click</button>
+    <script>
+
+        var speed = document.querySelector("input")
+        var pera = document.querySelector('.pera')
+        var cElement = document.querySelector('.cElement')
+        var sElement = document.querySelector('.sElement')
+        var button = document.querySelector('.button')
+
+        var scroller = true;
+
+        const content = "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p><p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p><p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.</p><p>Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Alreet. Quisque rutrum.</p><p>Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper uliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laotricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</p><p>Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, l eeoget bibendum sodales, augue velit cursus nunc,</p>";
+
+
+
+        window.onload = setupScroll;
+
+        button.addEventListener("click", function () {
+
+            scroller ^= true;
+            button.innerText = !scroller ? "Start" : "Stop";
+        })
+
+
+        cElement.addEventListener("mouseenter", scrollSpeed);
+        cElement.addEventListener("mouseleave", scrollSpeed);
+
+        function scrollSpeed(e) {
+            scroller = (e.type == "mouseenter") ? false : true;
+            pera.innerHTML = "mouse stopper ";
+
+        }
+function setupScroll(){
+
+    sElement.innerHTML = content ;
+
+var temp = sElement.getBoundingClientRect();
+ console.log(temp)
+
+cElement.style.height = ( temp.height / 2) + "px"
+sElement.style.top = temp.height + "px" ;
+scrollInt = setInterval(scrollingEle, 50);
+}
+
+function scrollingEle(){
+
+var scrollSpeed = speed.value;
+
+if(scroller){
+
+
+var posY = parseInt(sElement.style.top)
+
+if(posY + sElement.clientHeight > 0 ){
+    sElement.style.top = posY - scrollSpeed + "px";
+}else{
+    sElement.style.top = cElement.clientHeight + "px"
+}
+pera.innerHTML = "Scroll speed" + scrollSpeed + " Y position" + posY ;
+}
+}
+
+
+    </script>
+</body>
+
+</html>
