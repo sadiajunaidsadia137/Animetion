@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation</title>
+
+    <style>
+
+        .main{
+            width: 200px;
+            height: 200px;
+            background-color: green;
+
+            animation-name: box-move;
+            animation-duration: 4s;
+
+
+            /* animation-timing-function: ease; */
+            /* animation-timing-function: ease-out; */
+            /* animation-timing-function: ease-in; */
+            /* animation-timing-function: ease-in-out; */
+            /* animation-timing-function: linear; */
+            /* animation-timing-function: steps(5); */
+
+
+            /* animation-delay: 2s; */
+
+            animation-iteration-count: infinite;
+
+
+            /* animation-fill-mode: backwards; */
+            /* animation-fill-mode: forwards; */
+
+
+            /* animation-direction: reverse; */
+            /* animation-direction: alternate; */
+            /* animation-direction: alternate-reverse; */
+
+            animation-play-state: paused;
+            animation-play-state: running;
+
+
+
+        }
+
+        /* @keyframes box-move {
+           from{
+            margin-left: 0px;
+           }
+           to{
+            margin-left: 500px;
+           }
+        } */
+
+
+
+        @keyframes box-move {
+            0%{
+                margin-left: 0px;
+            }
+            100%{
+                margin-left: 400px;
+            }
+        }
+
+
+
+
+
+    </style>
+
+</head>
+<body>
+
+
+
+    <div class="main">
+
+    </div>
+
+
+    
+</body>
+</html>
